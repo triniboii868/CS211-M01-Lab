@@ -13,7 +13,7 @@ Outputs:          [Outputs should vary, should display an initial welcome messag
 Notes:            [Any additional important information]
 """
 
-#
+# Directions for programming
 """
 START
 Display a welcome message to the customer
