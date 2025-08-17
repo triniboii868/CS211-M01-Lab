@@ -14,6 +14,7 @@ Notes:            [Any additional important information]
 """
 
 # Directions for programming
+
 """
 START
 Display a welcome message to the customer
