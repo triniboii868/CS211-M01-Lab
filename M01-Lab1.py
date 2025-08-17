@@ -1,15 +1,15 @@
 """
-Project/File Name: ___________________________
-Author:           ___________________________
-Date Created:     ___________________________
-Last Modified:    ___________________________
+Project/File Name: Food Menu
+Author:           Marc Robertson
+Date Created:     08/15/2025
+Last Modified:    08/17/2025
 
-Purpose:          [Brief description of what this file/project does]
+Purpose:          [This program takes the input from users from the menu, using the dictionary to give each item a key. Once selected it will be added to a total_cost function which will be displayed once the loop is returned."]
 
-Dependencies:     [List any required libraries, modules, or files]
-Usage:            [How to run or use this file/project]
-Inputs:           [Describe expected input, if any]
-Outputs:          [Describe output, if any]
+Dependencies:     [List any required libraries, modules, or files.]
+Usage:            [Run code, input the necessary data in terminal, watch the program do its magic.]
+Inputs:           [Customers are presented with an initial name input, then expected to input a number from the menu, or "done" if not wanting to proceed with ordering.]
+Outputs:          [Outputs should vary, should display an initial welcome message, greeting with a custom menu, error message if invalid number is entered, or a confirmation message when item is added to the tota cost. Lastly, an order total is printed in the end.]
 Notes:            [Any additional important information]
 """
 
@@ -33,3 +33,59 @@ Display the total order amount to the customer
 Display a thank you message
 END
 """
+
+# Dictionary using array to index the list for the menu; the item number is the key which contains item name and price 
+
+menu = {
+
+    1: {"name": "Burger", "price": 7},
+    2: {"name": "Hotdog", "price": 3},
+    3: {"name": "Drink", "price": 2},
+    4: {"name": "Cake", "price": 5},
+    5: {"name": "Pizza", "price": 5}
+    
+}
+
+# Initialize variable
+
+order_total = 0 
+
+#Print welcome message to user
+
+name = input("Welcome to Marc's Food Shop! Can I have a name for the order? ")
+print(f"Welcome {name}, what can I get started for you? \n") 
+
+# Print menu frin array 
+
+for item_num, item_info in menu.items():
+    print(f"Item #{item_num}: {item_info['name']} - ${item_info['price']}.00")
+
+print("\nType the item number to order, or type 'done' if you've changed your mind.\n")
+
+# While loop while True to continue to continue asking for item number
+
+while True:
+    choice = input("Enter item number: ")
+
+# Ends the loop if user inputs "done"
+
+    if choice == "done":
+        break
+
+# Otherwise the item number choice is input, the value is stored as an integer in the variable choice && the choice is added to the order total. 
+    if choice.isdigit():
+        choice = int(choice)
+        if choice in menu:
+            order_total += menu[choice]["price"]
+            print(f"Added {menu[choice]['name']} to your order. Current total: ${order_total}.00")
+
+# Edge case scenario where incorrect type of response is inputted. 
+        else: 
+            print("Invalid item number, please try another menu number.")
+
+    else:
+        print("Please enter a valid number or 'done'. ")
+
+# Prints the final total from the menu choices throughout the while loop
+
+print(f"\nThanks {name}! Your order total is: ${order_total}.00")
